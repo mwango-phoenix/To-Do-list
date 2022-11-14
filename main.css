@@ -3,6 +3,7 @@
     --light: #f4f4f4;
     --dark: rgb(44, 40, 39);
     --warning: rgb(182, 22, 22);
+    --selected: rgb(255, 253, 118);
 }
 
 * {
@@ -47,7 +48,7 @@ body {
     line-height: 1.5;
     font-size: 0.9rem;
     list-style: circle;
-    padding-left: 1.7em;
+    padding-left: 1.4em;
 }
 
 .category-name {
@@ -62,22 +63,14 @@ form {
     display: flex;
 }
 
-.btn.create {
-    font-size: 0.9rem;
-    font-weight: 900;
-    border: 0;
-    background: 0;
-    color: inherit;
-    margin-left: 0.2rem;
-    padding-left: 0.5px;
-    cursor: pointer;
-}
-
 .new {
     background: rgba(255, 255, 255, 0.2);
     border: 0;
     color: inherit;
     border-bottom: 1px solid currentColor;
+    font-size: inherit;
+    outline: none;
+    padding: 0.25em;
 }
 
 .new::placeholder {
@@ -90,7 +83,7 @@ form {
 }
 
 .new.list {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
 }
 
 .new.list::placeholder {
@@ -102,11 +95,11 @@ form {
 }
 
 .active-list {
-    font-weight: bold;
+    font-weight: 900;
+    color: var(--selected)
 }
 
 .to-do-list {
-    --spacer: 2rem;
     grid-area: active;
     background: var(--light);
     color: var(--dark);
@@ -121,18 +114,19 @@ form {
 }
 
 .list-name {
-    margin: 0;
+    margin: 0 1em 0 0;
 }
 
 .count {
     margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.7;
 }
 
 .to-do-body {
-    padding: 1.1rem;
+    padding: 1.5rem;
     position: relative;
 }
-
 
 
 .check {
@@ -191,6 +185,21 @@ form {
     width: 100%;
     left: 0;
     bottom: -30px;
+}
+ 
+.btn.create {
+    font-size: 0.9rem;
+    font-weight: 900;
+    border: 0;
+    background: 0;
+    color: inherit;
+    margin-left: 0.2rem;
+    padding-left: 0.4px;
+    cursor: pointer;
+}
+
+.btn.create:hover {
+    opacity: 0.6;
 }
 
 .btn.delete {
