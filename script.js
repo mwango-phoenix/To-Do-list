@@ -1,5 +1,5 @@
-const listsContainer = document.querySelector("[category-list]")
-const newCategory = document.querySelector("[data-new-category]")
+const listsContainer = document.querySelector("[project-list]")
+const newProject = document.querySelector("[data-new-project]")
 const newListInput = document.querySelector("[data-new-list-input]")
 const deleteList = document.querySelector("[dlt-btn]")
 const todoContainer = document.querySelector("[data-todo-container]")
@@ -17,10 +17,10 @@ const LOCAL_STORAGE_SELECTED_ID_KEY = "task.selectedListId";
 
 //get lists from locat storage, and if non-existent, use empty array
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
-//get id of selected category
+//get id of selected project
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_ID_KEY);
 
-//update selectedListId to id of current category
+//update selectedListId to id of current project
 listsContainer.addEventListener('click', e => {
   if (e.target.tagName.toLowerCase() === 'li') {
     selectedListId = e.target.dataset.listId
@@ -28,8 +28,8 @@ listsContainer.addEventListener('click', e => {
   }
 })
 
-// add new category to list
-newCategory.addEventListener("submit", (e) => {
+// add new project to list
+newProject.addEventListener("submit", (e) => {
   e.preventDefault();
   const listName = newListInput.value;
   if (listName == null || listName === "") return;
@@ -77,7 +77,7 @@ function save() {
 
 function render() {
   clearItems(listsContainer)
-  renderCategories()
+  renderProjects()
   const selectedList = lists.find(list => list.id === selectedListId)
   if (selectedListId == null || !lists.length) {
     todoContainer.style.display = 'none'
@@ -90,11 +90,11 @@ function render() {
   renderTasks(selectedList)
 }
 
-function renderCategories() {
+function renderProjects() {
   lists.forEach((list) => {
     const listItem = document.createElement("li");
     listItem.dataset.listId = list.id;
-    listItem.classList.add("category-name");
+    listItem.classList.add("project-name");
     listItem.innerText = list.name;
     if (list.id === selectedListId) {
       listItem.classList.add("active-list")
